@@ -1,0 +1,12 @@
+@startuml
+
+actor Player as player
+actor Ghast
+
+rectangle  System {
+usecase "Install Position system to ghast" as install
+}
+
+player -> install
+
+@enduml
