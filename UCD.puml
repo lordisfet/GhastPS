@@ -1,12 +1,25 @@
 @startuml
+left to right direction
 
 actor Player as player
-actor Ghast
 
-rectangle  System {
-usecase "Install Position system to ghast" as install
+rectangle System {
+  usecase "Install position system to ghast" as install
+  usecase "Insert the card to device" as mapInsert
+  usecase "Remove the card from device" as mapRemove
+  usecase "Choose the mark to follow" as markSelect
+  usecase "Launch ghast to mark" as launch
+  usecase "Cancel launch" as cancel
+  usecase "Select flight altitude" as altitudeSelect
 }
 
-player -> install
+player --> install
+player --> mapInsert
+player --> mapRemove
+player --> altitudeSelect
+player --> launch
+player --> cancel
+
+launch --> markSelect : <<include>>
 
 @enduml
