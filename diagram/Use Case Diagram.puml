@@ -5,8 +5,8 @@ actor Player as player
 
 rectangle System {
   usecase "Install position system to ghast" as install
-  usecase "Insert the card to device" as mapInsert
-  usecase "Remove the card from device" as mapRemove
+  usecase "Insert the map to device" as mapInsert
+  usecase "Remove the map from device" as mapRemove
   usecase "Choose the mark to follow" as markSelect
   usecase "Launch ghast to mark" as launch
   usecase "Cancel launch" as cancel

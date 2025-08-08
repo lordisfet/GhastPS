@@ -1,0 +1,35 @@
+@startuml
+start
+
+:Install GPS;
+note right
+  GPS – ghasts position system
+end note
+:Open GPS;
+
+if (Is the map installed?) is (yes) then
+  if (Remove the map?) is (yes) then
+    :Remove map;
+  else (no)
+    :Choose mark to follow;
+    :Launch ghast to mark;
+
+    while (Flight in progress?) is (yes)
+      fork
+        if (Player cancelled flight?) then (yes)
+          stop
+        endif
+      fork again
+        if (Change altitude?) then (yes)
+          :Adjust altitude;
+        endif
+      end fork
+    endwhile (no)
+
+  endif
+else (no)
+  :Insert map;
+endif
+
+stop
+@enduml
