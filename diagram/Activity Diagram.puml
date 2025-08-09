@@ -3,7 +3,8 @@ start
 
 :Install GPS;
   note right
-    GPS – ghast's position system
+    It`s not Global Position System :)
+    GPS – Ghast's Position System
   end note
   :Open GPS;
 
@@ -19,7 +20,7 @@ partition "Stage 1: Preparation" %lighten(lime, 75) {
   endwhile (yes)
 }
 
-  :Launch ghast to mark;
+:Launch ghast to mark;
 
 partition "Stage 2: Flight" #lightcyan {
 
