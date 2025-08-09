@@ -2,34 +2,39 @@
 start
 
 :Install GPS;
-note right
-  GPS – ghasts position system
-end note
-:Open GPS;
+  note right
+    GPS – ghast's position system
+  end note
+  :Open GPS;
 
-if (Is the map installed?) is (yes) then
-  if (Remove the map?) is (yes) then
-    :Remove map;
-  else (no)
-    :Choose mark to follow;
-    :Launch ghast to mark;
+partition "Stage 1: Preparation" %lighten(lime, 75) {
+  while (Ready to launch?) is (no)
+    if (Is the map installed?) is (no) then
+      :Insert map;
+    else (yes)
+      if (Is mark chosen?) is (no) then
+        :Choose mark to follow;
+      endif
+    endif
+  endwhile (yes)
+}
 
-    while (Flight in progress?) is (yes)
-      fork
-        if (Player cancelled flight?) then (yes)
-          stop
-        endif
-      fork again
-        if (Change altitude?) then (yes)
-          :Adjust altitude;
-        endif
-      end fork
-    endwhile (no)
+  :Launch ghast to mark;
 
-  endif
-else (no)
-  :Insert map;
-endif
+partition "Stage 2: Flight" #lightcyan {
+
+  while (Flight in progress?) is (yes)
+    fork
+      if (Player cancelled flight?) then (yes)
+        stop
+      endif
+    fork again
+      if (Change altitude?) then (yes)
+        :Adjust altitude;
+      endif
+    end fork
+  endwhile (no)
+}
 
 stop
 @enduml
