@@ -8,7 +8,9 @@ rectangle System {
   usecase "Insert the map to device" as mapInsert
   usecase "Remove the map from device" as mapRemove
   usecase "Choose the mark to follow" as markSelect
-  usecase "Launch ghast to mark" as launch
+  usecase launch as "Launch ghast to mark
+  --
+  Player cancel launch"
   usecase "Cancel launch" as cancel
   usecase "Select flight altitude" as altitudeSelect
 }
@@ -18,8 +20,8 @@ player --> mapInsert
 player --> mapRemove
 player --> altitudeSelect
 player --> launch
-player --> cancel
 
-launch --> markSelect : <<include>>
+launch ..> markSelect : <<include>>
+launch <.. cancel : <<extend>>
 
 @enduml
