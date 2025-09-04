@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.gmail.astroidchannel.ghastps;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -26,10 +26,10 @@ import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(ExampleMod.MODID)
-public final class ExampleMod {
+@Mod(Ghastps.MODID)
+public final class Ghastps {
     // Define mod id in a common place for everything to reference
-    public static final String MODID = "examplemod";
+    public static final String MODID = "ghastps";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "examplemod" namespace
@@ -72,7 +72,7 @@ public final class ExampleMod {
                 output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
-    public ExampleMod(FMLJavaModLoadingContext context) {
+    public Ghastps(FMLJavaModLoadingContext context) {
         var modBusGroup = context.getModBusGroup();
 
         // Register the commonSetup method for modloading
@@ -86,7 +86,7 @@ public final class ExampleMod {
         CREATIVE_MODE_TABS.register(modBusGroup);
 
         // Register the item to a creative tab
-        BuildCreativeModeTabContentsEvent.getBus(modBusGroup).addListener(ExampleMod::addCreative);
+        BuildCreativeModeTabContentsEvent.getBus(modBusGroup).addListener(Ghastps::addCreative);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
